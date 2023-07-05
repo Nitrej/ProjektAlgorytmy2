@@ -3,6 +3,11 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+cmake-build-debug/
+CMakeLists.txt
+
+lib/
+
 # User-specific files
 *.rsuser
 *.suo
@@ -39,6 +44,10 @@ bld/
 
 # Visual Studio 2017 auto generated files
 Generated\ Files/
+
+# CLion project files
+.idea
+cmake-build-*
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
