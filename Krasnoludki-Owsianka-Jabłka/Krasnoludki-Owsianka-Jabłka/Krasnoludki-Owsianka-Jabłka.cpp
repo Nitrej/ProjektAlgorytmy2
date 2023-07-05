@@ -36,7 +36,7 @@ int main()
     {
         cout << "Kopalnia " << kopalnie[i].idKopalni << " " << kopalnie[i].wydobywanySurowiec << endl;
     }
-
+    
     cout << "\nKrolewna Sniezka nakazuje im nastepujace prace: " << endl;
 
     przyporzadkujKrasnaleMaksWydobycie(krasnoludki, kopalnie);
