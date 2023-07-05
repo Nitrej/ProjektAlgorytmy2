@@ -39,7 +39,7 @@ int main()
     
     cout << "\nKrolewna Sniezka nakazuje im nastepujace prace: " << endl;
 
-    przyporzadkujKrasnaleMaksWydobycieMaloOwsianki(krasnoludki, kopalnie);
+    przyporzadkujKrasnaleMaksWydobycie(krasnoludki, kopalnie);
 
     wypiszInfoPrzyporzadkowanie(krasnoludki, kopalnie);
     
