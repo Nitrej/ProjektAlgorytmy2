@@ -7,6 +7,12 @@
 
 using namespace std;
 
+/// <summary>
+/// Funkcja wczytuje dane z pliku "dane.txt" do wektorów kopani i krasnoludków.
+/// </summary>
+/// <param name="kopalnie">WskaŸnik na wektor<Kopalnia></param>
+/// <param name="krasnoludki">WskaŸnik na wektor<Krasnoludek></param>
+/// <returns>true w przypadku poprawnego wczytania danych; false dla pozosta³ych</returns>
 bool wczytanieDanych(vector<Kopalnia> *kopalnie, vector<Krasnoludek> *krasnoludki)
 {
     
@@ -56,6 +62,10 @@ bool wczytanieDanych(vector<Kopalnia> *kopalnie, vector<Krasnoludek> *krasnoludk
     return false;
 }
 
+/// <summary>
+/// Funkcja wypisuje informacje o krasnoludkach na standardowe wyjœcie.
+/// </summary>
+/// <param name="krasnale">Referencja do wektora krasnoludków</param>
 void wypiszKrasnale(vector<Krasnoludek>& krasnale) 
 {
     cout << "\nDo naszego krolestwa przybyli: " << endl;
@@ -65,6 +75,10 @@ void wypiszKrasnale(vector<Krasnoludek>& krasnale)
     }
 }
 
+/// <summary>
+/// Funkcja wypisuje informacje o kopalniach na standardowe wyjœcie.
+/// </summary>
+/// <param name="kopalnie">Referencja do wektora kopalnii</param>
 void wypiszKopalnie(vector<Kopalnia>& kopalnie)
 {
     cout << "\nOdkryto nastepujace kopalnie: " << endl;
@@ -74,11 +88,24 @@ void wypiszKopalnie(vector<Kopalnia>& kopalnie)
     }
 }
 
+/// <summary>
+/// Funkcja porównuje dwa krasnoludki.
+/// </summary>
+/// <param name="krasnoludek1">Referencja na Krasnoludka</param>
+/// <param name="krasnoludek2">Referencja na Krasnoludka</param>
+/// <returns>true w przypadku kiedy wartoœæ wydajnoœci pierwszego krasnoludka jest wiêksza od drugiego; false w pozosta³ych przypadkach</returns>
 bool compareDwarfs(const Krasnoludek& krasnoludek1, const Krasnoludek& krasnoludek2) {
     return krasnoludek1.wydajnosc > krasnoludek2.wydajnosc;
 }
 
-//Funkcja do obliczania odleglosci
+/// <summary>
+/// Funkcja oblicza odleg³oœæ krasnoludka od kopalni.
+/// </summary>
+/// <param name="kopalniaX">Wspó³rzêdna x kopalni</param>
+/// <param name="kopalniaY">Wspó³rzêdna y kopalni</param>
+/// <param name="krasnoludekX">Wspó³rzêdna x krasnoludka</param>
+/// <param name="krasnoludekY">Wspó³rzêdna y krasnoludka</param>
+/// <returns>Wartoœæ ca³kowit¹ odle³oœæi krasnoludka od kopalnii</returns>
 int obliczOdleglosc(int kopalniaX, int kopalniaY, int krasnoludekX, int krasnoludekY) {
     int dx = abs(kopalniaX - krasnoludekX);
     int dy = abs(kopalniaY - krasnoludekY);
@@ -86,6 +113,12 @@ int obliczOdleglosc(int kopalniaX, int kopalniaY, int krasnoludekX, int krasnolu
 }
 
 //Maksymalne wydobycie, Zlozonosc O(n^2) gdzie n-liczba krasnoludkow 
+
+/// <summary>
+/// Funkcja przyporz¹dkowuje krasnoludki do kopalnii pod wzlêdem maksymalnego wydobycia.
+/// </summary>
+/// <param name="dwarves">Referencja na wektor krasnoludków</param>
+/// <param name="mines">Referencja na wektor kopalñ</param>
 void przyporzadkujKrasnaleMaksWydobycie(vector<Krasnoludek>& dwarves, vector<Kopalnia>& mines) {
     for (Krasnoludek& dwarf : dwarves) {
         int best_mine = -1;
@@ -120,6 +153,12 @@ void przyporzadkujKrasnaleMaksWydobycie(vector<Krasnoludek>& dwarves, vector<Kop
 }
 
 //Maksymalne wydobycie z minimalnymi odleglosciami od kopalni, Zloznosc O(n^2) gdzie n-liczba krasnoludkow
+
+/// <summary>
+/// Funkcja przyporz¹dkowuje krasnoludki do kopalnii pod wzlêdem minimalnego zu¿ycia owsianki.
+/// </summary>
+/// <param name="dwarves">Referencja na wektor krasnoludków</param>
+/// <param name="mines">Referencja na wektor kopalñ</param>
 void przyporzadkujKrasnaleMaksWydobycieMaloOwsianki(vector<Krasnoludek>& dwarves, vector<Kopalnia>& mines) {
     for (Krasnoludek& dwarf : dwarves) {
         int best_mine = -1;
@@ -167,6 +206,12 @@ void przyporzadkujKrasnaleMaksWydobycieMaloOwsianki(vector<Krasnoludek>& dwarves
 }
 
 //Funkcja wypisujaca info o krasnoludkach
+
+/// <summary>
+/// Funkcja wyliczaj¹ca wydobycie surowców i wypisuj¹ca informacje na standardowe wyjœcie.
+/// </summary>
+/// <param name="krasnoludki">Referencja na wektor krasnoludków</param>
+/// <param name="kopalnie">Referencja na wektor kopalñ</param>
 void wypiszInfoPrzyporzadkowanie(vector<Krasnoludek>& krasnoludki, vector<Kopalnia>& kopalnie) {
 
     int sumarycznaOdleglosc = 0;
