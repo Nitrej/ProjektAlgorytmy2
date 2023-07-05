@@ -16,6 +16,7 @@ struct Punkt
 
 Punkt p0;
 
+//zlozonosc O(1)
 Punkt nextToTop(std::stack<Punkt>& S)
 {
     Punkt p = S.top();
@@ -25,6 +26,7 @@ Punkt nextToTop(std::stack<Punkt>& S)
     return res;
 }
 
+//zlozonosc czasowa O(1)
 void swap(Punkt& p1, Punkt& p2)
 {
     Punkt temp = p1;
@@ -32,12 +34,14 @@ void swap(Punkt& p1, Punkt& p2)
     p2 = temp;
 }
 
+//zlozonosc O(1)
 int distance(Punkt p1, Punkt p2)
 {
     return (p1.x - p2.x) * (p1.x - p2.x) +
         (p1.y - p2.y) * (p1.y - p2.y);
 }
 
+//zlozonosc O(1)
 int orientation(Punkt p, Punkt q, Punkt r)
 {
     int val = (q.y - p.y) * (r.x - q.x) -
@@ -47,6 +51,7 @@ int orientation(Punkt p, Punkt q, Punkt r)
     return (val > 0) ? 1 : 2; // z lub przeciwnie do ruchu wskazowek zegara
 }
 
+//zlozonosc czasowa O(1)
 int compare(const void* vp1, const void* vp2)
 {
     Punkt* p1 = (Punkt*)vp1;
@@ -60,6 +65,7 @@ int compare(const void* vp1, const void* vp2)
 }
 
 //Algorytm Grahama
+//zlozonosc O(nlogn) n-liczba krasnoludkow
 void otoczkaWypukla(vector<Kopalnia> *kopalnie) {
     
     int n = kopalnie->size();
