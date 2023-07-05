@@ -34,7 +34,7 @@ public:
 	std::vector<int> indeksyPracujacychKrasnali = {};
 
 	/// <summary>
-	/// Konstruktor kopalnii
+	/// Konstruktor kopalnii.
 	/// </summary>
 	/// <param name="idKopalni">Id kopalnii</param>
 	/// <param name="tmpwydobywanySurowiec">Wydobywany surowiec</param>
