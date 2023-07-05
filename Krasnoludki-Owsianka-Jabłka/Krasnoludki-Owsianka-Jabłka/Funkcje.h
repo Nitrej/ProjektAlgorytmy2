@@ -58,6 +58,7 @@ bool wczytanieDanych(vector<Kopalnia> *kopalnie, vector<Krasnoludek> *krasnoludk
 
 void wypiszKrasnale(vector<Krasnoludek>& krasnale) 
 {
+    cout << "\nDo naszego krolestwa przybyli: " << endl;
     for (int i = 0; i < krasnale.size(); i++)
     {
         cout << "Krasnal " << krasnale[i].idKrasnoludka << " preferuje wydobycie " << krasnale[i].preferowanyFach << endl;
@@ -66,6 +67,7 @@ void wypiszKrasnale(vector<Krasnoludek>& krasnale)
 
 void wypiszKopalnie(vector<Kopalnia>& kopalnie)
 {
+    cout << "\nOdkryto nastepujace kopalnie: " << endl;
     for (int i = 0; i < kopalnie.size(); i++)
     {
         cout << "Kopalnia " << kopalnie[i].idKopalni << " jest bogata w zloze " << kopalnie[i].wydobywanySurowiec << endl;

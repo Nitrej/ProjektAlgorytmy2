@@ -26,8 +26,6 @@ int main()
     //Sortowanie krasnoludkow
     sort(krasnoludki.begin(), krasnoludki.end(), compareDwarfs);
 
-    cout << "\nDo naszego krolestwa przybyli: " << endl;
-
     wypiszKrasnale(krasnoludki);
 
     wypiszKopalnie(kopalnie);
@@ -38,7 +36,7 @@ int main()
 
     wypiszInfoPrzyporzadkowanie(krasnoludki, kopalnie);
 
-    cout << "\nKopalnie przez ktore musi przejsc Ksiaze: " << endl;
+    cout << "\nRanna trasa Ksiecia wyglada wiec nastepujaco: " << endl;
 
     otoczkaWypukla(&kopalnie);
 
@@ -47,13 +45,13 @@ int main()
         kopalnia.indeksyPracujacychKrasnali.clear();
     }
 
-    cout << "\nJednak nie: " << endl;
+    cout << "\nPo uwzglenieniu lepszych mozliwosci przydzialu pracy dla krasnoludkow Krolewna zadecydowala tak: " << endl;
 
     przyporzadkujKrasnaleMaksWydobycieMaloOwsianki(krasnoludki, kopalnie);
     
     wypiszInfoPrzyporzadkowanie(krasnoludki, kopalnie);
 
-    cout << "\nKopalnie przez ktore musi przejsc Ksiaze ostatecznie: " << endl;
+    cout << "\nZmieniona zostala takze ranna trasa Ksiecia i wyglada teraz tak: " << endl;
 
     otoczkaWypukla(&kopalnie);
 
