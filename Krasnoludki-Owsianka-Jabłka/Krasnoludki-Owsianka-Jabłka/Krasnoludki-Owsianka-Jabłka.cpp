@@ -8,19 +8,29 @@
 #include "kopalnia.h"
 #include "krasnoludek.h"
 
+
+using namespace std;
+
 vector<Krasnoludek> krasnoludki;
 vector<Kopalnia> kopalnie;
 
-using namespace std;
 int main()
 {
     cout << "Krolestwo Sniezki wita!\n";
-    if (!wczytanieDanych(kopalnie,krasnoludki)) {
+    if (!wczytanieDanych(&kopalnie,&krasnoludki)) {
         cout << "Czegos tu brakuje!" << endl;
         return 0;
     }
     cout << "Dalsze rozkazy: " << endl;
 
+    for (int i = 0; i < krasnoludki.size(); i++)
+    {
+        cout << "Krasnal " << krasnoludki[i].idKrasnoludka << " " << krasnoludki[i].preferowanyFach << endl;
+    }
+    for (int i = 0; i < kopalnie.size(); i++)
+    {
+        cout << "Kopalnia " << kopalnie[i].idKopalni << " " << kopalnie[i].wydobywanySurowiec << endl;
+    }
     
 }
 

@@ -1,7 +1,9 @@
+#pragma once
 #include <vector>
 #include <string>
 
-class Krasnoludek {
+class Krasnoludek
+{
 public:
 	int wydajnosc;
 	std::string preferowanyFach;

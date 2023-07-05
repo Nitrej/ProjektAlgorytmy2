@@ -4,42 +4,53 @@
 #include "krasnoludek.h"
 #include "kopalnia.h"
 
-bool wczytanieDanych(vector<Kopalnia> &kopalnie, vector<Krasnoludek> &krasnoludki) {
+using namespace std;
 
-    int iloscKrasnali, iloscKopalni;
-
-    fstream f;
-
-    f.open("dane.txt", ios::in);
-
-    f >> iloscKrasnali >> iloscKopalni;
-
-    for (int i = 0; i < iloscKrasnali; i++) 
+bool wczytanieDanych(vector<Kopalnia> *kopalnie, vector<Krasnoludek> *krasnoludki)
+{
+    
+    try
     {
-        int wydajnosc;
-        std::string preferowanyFach;
-        int idKrasnoludka;
-        int polozenieX;
-        int polozenieY;
+        int iloscKrasnali, iloscKopalni;
 
-        f >> wydajnosc >> preferowanyFach >> idKrasnoludka >> polozenieX >> polozenieY;
+        fstream f;
 
-        krasnoludki.push_back(Krasnoludek(wydajnosc, preferowanyFach, idKrasnoludka, polozenieX, polozenieY));
+        f.open("dane.txt", ios::in);
 
+        f >> iloscKrasnali >> iloscKopalni;
+
+        for (int i = 0; i < iloscKrasnali; i++)
+        {
+            int wydajnosc;
+            std::string preferowanyFach;
+            int idKrasnoludka;
+            int polozenieX;
+            int polozenieY;
+
+            f >> wydajnosc >> preferowanyFach >> idKrasnoludka >> polozenieX >> polozenieY;
+
+            krasnoludki -> push_back(Krasnoludek(wydajnosc, preferowanyFach, idKrasnoludka, polozenieX, polozenieY));
+
+        }
+
+        for (int i = 0; i < iloscKopalni; i++)
+        {
+            int idKopalni;
+            std::string wydobywanySurowiec;
+            int limitMiejsc;
+            int polozenieX;
+            int polozenieY;
+
+            f >> idKopalni >>wydobywanySurowiec >> limitMiejsc >> polozenieX >> polozenieY;
+
+            kopalnie -> push_back(Kopalnia(idKopalni,wydobywanySurowiec, limitMiejsc, polozenieX, polozenieY));
+
+        }
+        return true;
     }
-
-    for (int i = 0; i < iloscKopalni; i++) 
+    catch (const std::exception&)
     {
-        std::string wydobywanySurowiec;
-        int limitMiejsc;
-        int polozenieX;
-        int polozenieY;
-
-        f >> wydobywanySurowiec >> limitMiejsc >> polozenieX >> polozenieY;
-
-        kopalnie.push_back(Kopalnia(wydobywanySurowiec, limitMiejsc, polozenieX, polozenieY));
-
+        return false;
     }
-
-	return false;
+    return false;
 }

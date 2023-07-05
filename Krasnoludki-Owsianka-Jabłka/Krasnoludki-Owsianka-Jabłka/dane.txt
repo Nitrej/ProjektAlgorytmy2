@@ -1,0 +1,9 @@
+3 5
+5 zloto 1 0 0
+5 srebro 2 1 1
+5 miedz 3 2 2
+7 zloto 4 3 3
+8 srebro 5 4 4
+1 zloto 2 5 5
+2 srebro 2 6 6
+3 miedz 2 7 7
