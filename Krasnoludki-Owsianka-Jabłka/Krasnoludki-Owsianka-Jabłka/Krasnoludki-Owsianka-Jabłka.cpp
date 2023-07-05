@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 #include "Funkcje.h"
 #include "kopalnia.h"
@@ -19,6 +20,9 @@ int main()
         cout << "Czegos tu brakuje!" << endl;
         return 0;
     }
+    //Sortowanie krasnoludkow
+    sort(krasnoludki.begin(), krasnoludki.end(), compareDwarfs);
+
     cout << "Dalsze rozkazy: " << endl;
 
     
