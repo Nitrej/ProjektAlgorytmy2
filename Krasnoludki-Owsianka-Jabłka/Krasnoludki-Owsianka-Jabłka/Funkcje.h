@@ -85,7 +85,7 @@ int obliczOdleglosc(int kopalniaX, int kopalniaY, int krasnoludekX, int krasnolu
     return sqrt(dx * dx + dy * dy);
 }
 
-//Maksymalne wydobycie
+//Maksymalne wydobycie, Zlozonosc O(n^2) gdzie n-liczba krasnoludkow 
 void przyporzadkujKrasnaleMaksWydobycie(vector<Krasnoludek>& dwarves, vector<Kopalnia>& mines) {
     for (Krasnoludek& dwarf : dwarves) {
         int best_mine = -1;
@@ -119,7 +119,7 @@ void przyporzadkujKrasnaleMaksWydobycie(vector<Krasnoludek>& dwarves, vector<Kop
     }
 }
 
-//Maksymalne wydobycie z minimalnymi odleglosciami od kopalni
+//Maksymalne wydobycie z minimalnymi odleglosciami od kopalni, Zloznosc O(n^2) gdzie n-liczba krasnoludkow
 void przyporzadkujKrasnaleMaksWydobycieMaloOwsianki(vector<Krasnoludek>& dwarves, vector<Kopalnia>& mines) {
     for (Krasnoludek& dwarf : dwarves) {
         int best_mine = -1;
