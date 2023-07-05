@@ -119,7 +119,7 @@ void przyporzadkujKrasnaleMaksWydobycie(vector<Krasnoludek>& dwarves, vector<Kop
     }
 }
 
-//Maksymalne wydobycie z minimalnymi odleglosciami od kopalnii
+//Maksymalne wydobycie z minimalnymi odleglosciami od kopalni
 void przyporzadkujKrasnaleMaksWydobycieMaloOwsianki(vector<Krasnoludek>& dwarves, vector<Kopalnia>& mines) {
     for (Krasnoludek& dwarf : dwarves) {
         int best_mine = -1;
