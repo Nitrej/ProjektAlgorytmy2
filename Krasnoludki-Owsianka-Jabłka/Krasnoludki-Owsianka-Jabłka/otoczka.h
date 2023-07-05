@@ -63,6 +63,7 @@ int compare(const void* vp1, const void* vp2)
 void otoczkaWypukla(vector<Kopalnia> *kopalnie) {
     
     int n = kopalnie->size();
+    int dlugoscTrasy = 0;
 
     vector<Punkt> tmp;
     vector<Punkt> input;
@@ -116,7 +117,10 @@ void otoczkaWypukla(vector<Kopalnia> *kopalnie) {
     {
         for (int i = 0; i < input.size(); i++) {
             cout << "Kopalnia nr: " << input[i].id << " (" << input[i].x << ", " << input[i].y << ")" << endl;
+            if (i != 0) dlugoscTrasy += distance(input[i], input[i - 1]);
         }
+        //if (input.size() != 1) dlugoscTrasy += distance(input[0], input[input.size()-1]);
+        cout << "\nKsiaze musi przebyc trase dluosci: " << dlugoscTrasy << " jednostek" << endl;
         return;
     }
 
@@ -133,12 +137,18 @@ void otoczkaWypukla(vector<Kopalnia> *kopalnie) {
             S.pop();
         S.push(tmp[i]);
     }
-
+    vector<Punkt> convexHullPoints;
     // wypisanie
     while (!S.empty())
     {
         Punkt p = S.top();
         cout << "Kopalnia nr: "<<p.id<<" (" << p.x << ", " << p.y << ")" << endl;
+        convexHullPoints.push_back(p);
         S.pop();
     }
+    for (int i = 0; i < convexHullPoints.size(); i++) {
+        if (i != 0) dlugoscTrasy += distance(convexHullPoints[i], convexHullPoints[i - 1]);
+    }
+    if(convexHullPoints.size() != 1) dlugoscTrasy += distance(convexHullPoints[0], convexHullPoints[input.size() - 1]);
+    cout<<"\nKsiaze musi przebyc trase dluosci: "<<dlugoscTrasy<<" jednostek"<<endl;
 };
