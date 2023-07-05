@@ -28,15 +28,10 @@ int main()
 
     cout << "\nDo naszego krolestwa przybyli: " << endl;
 
-    for (int i = 0; i < krasnoludki.size(); i++)
-    {
-        cout << "Krasnal " << krasnoludki[i].idKrasnoludka << " " << krasnoludki[i].preferowanyFach << endl;
-    }
-    for (int i = 0; i < kopalnie.size(); i++)
-    {
-        cout << "Kopalnia " << kopalnie[i].idKopalni << " " << kopalnie[i].wydobywanySurowiec << endl;
-    }
-    
+    wypiszKrasnale(krasnoludki);
+
+    wypiszKopalnie(kopalnie);
+
     cout << "\nKrolewna Sniezka nakazuje im nastepujace prace: " << endl;
 
     przyporzadkujKrasnaleMaksWydobycieMaloOwsianki(krasnoludki, kopalnie);

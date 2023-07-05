@@ -56,6 +56,22 @@ bool wczytanieDanych(vector<Kopalnia> *kopalnie, vector<Krasnoludek> *krasnoludk
     return false;
 }
 
+void wypiszKrasnale(vector<Krasnoludek>& krasnale) 
+{
+    for (int i = 0; i < krasnale.size(); i++)
+    {
+        cout << "Krasnal " << krasnale[i].idKrasnoludka << " preferuje wydobycie " << krasnale[i].preferowanyFach << endl;
+    }
+}
+
+void wypiszKopalnie(vector<Kopalnia>& kopalnie)
+{
+    for (int i = 0; i < kopalnie.size(); i++)
+    {
+        cout << "Kopalnia " << kopalnie[i].idKopalni << " jest bogata w zloze " << kopalnie[i].wydobywanySurowiec << endl;
+    }
+}
+
 bool compareDwarfs(const Krasnoludek& krasnoludek1, const Krasnoludek& krasnoludek2) {
     return krasnoludek1.wydajnosc > krasnoludek2.wydajnosc;
 }
