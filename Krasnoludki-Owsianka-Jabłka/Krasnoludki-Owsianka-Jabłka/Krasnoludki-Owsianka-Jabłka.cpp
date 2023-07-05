@@ -2,14 +2,20 @@
 //
 
 #include <iostream>
-#include "Funkcje.h"
+#include <vector>
 
+#include "Funkcje.h"
+#include "kopalnia.h"
+#include "krasnoludek.h"
+
+vector<Krasnoludek> krasnoludki;
+vector<Kopalnia> kopalnie;
 
 using namespace std;
 int main()
 {
     cout << "Krolestwo Sniezki wita!\n";
-    if (!wczytanieDanych()) {
+    if (!wczytanieDanych(kopalnie,krasnoludki)) {
         cout << "Czegos tu brakuje!" << endl;
         return 0;
     }
