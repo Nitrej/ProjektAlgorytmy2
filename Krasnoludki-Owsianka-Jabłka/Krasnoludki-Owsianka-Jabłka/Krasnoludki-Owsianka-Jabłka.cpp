@@ -39,11 +39,11 @@ int main()
     
     cout << "\nKrolewna Sniezka nakazuje im nastepujace prace: " << endl;
 
-    przyporzadkujKrasnaleMaksWydobycie(krasnoludki, kopalnie);
+    przyporzadkujKrasnaleMaksWydobycieMaloOwsianki(krasnoludki, kopalnie);
 
     wypiszInfoPrzyporzadkowanie(krasnoludki, kopalnie);
     
-    cout << "Kopalnie przez króre musi przejść Książe: " << endl;
+    cout << "Kopalnie przez króre musi przejsc Ksiaze: " << endl;
 
     otoczkaWypukla(&kopalnie);
 
