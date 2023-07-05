@@ -34,11 +34,26 @@ int main()
 
     cout << "\nKrolewna Sniezka nakazuje im nastepujace prace: " << endl;
 
-    przyporzadkujKrasnaleMaksWydobycieMaloOwsianki(krasnoludki, kopalnie);
+    przyporzadkujKrasnaleMaksWydobycie(krasnoludki, kopalnie);
 
     wypiszInfoPrzyporzadkowanie(krasnoludki, kopalnie);
+
+    cout << "\nKopalnie przez ktore musi przejsc Ksiaze: " << endl;
+
+    otoczkaWypukla(&kopalnie);
+
+    //Clear kopalni
+    for (Kopalnia& kopalnia : kopalnie) {
+        kopalnia.indeksyPracujacychKrasnali.clear();
+    }
+
+    cout << "\nJednak nie: " << endl;
+
+    przyporzadkujKrasnaleMaksWydobycieMaloOwsianki(krasnoludki, kopalnie);
     
-    cout << "Kopalnie przez króre musi przejsc Ksiaze: " << endl;
+    wypiszInfoPrzyporzadkowanie(krasnoludki, kopalnie);
+
+    cout << "\nKopalnie przez ktore musi przejsc Ksiaze ostatecznie: " << endl;
 
     otoczkaWypukla(&kopalnie);
 
