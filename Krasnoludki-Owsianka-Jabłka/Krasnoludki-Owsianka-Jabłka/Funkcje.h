@@ -147,3 +147,58 @@ void przyporzadkujKrasnaleMaksWydobycieMaloOwsianki(vector<Krasnoludek>& dwarves
         }
     }
 }
+
+//Funkcja wypisujaca info o krasnoludkach
+void wypiszInfoPrzyporzadkowanie(vector<Krasnoludek>& krasnoludki, vector<Kopalnia>& kopalnie) {
+
+    int sumarycznaOdleglosc = 0;
+    int wydobycieZloto = 0;
+    int wydobycieSrebro = 0;
+    int wydobycieMiedz = 0;
+
+    for (const auto& kopalnia : kopalnie) {
+        cout << "Kopalnia (Surowiec: " << kopalnia.wydobywanySurowiec << ", Polozenie: (" << kopalnia.polozenieX << ", " << kopalnia.polozenieY << "))\n";
+
+        for (int krasnalID : kopalnia.indeksyPracujacychKrasnali) {
+            const Krasnoludek& krasnal = krasnoludki[krasnalID];
+
+            int odleglosc = obliczOdleglosc(krasnal.polozenieX, krasnal.polozenieY, kopalnia.polozenieX, kopalnia.polozenieY);
+            cout << "Krasnoludek z domku " << krasnal.idKrasnoludka << ", Polozenie: (" << krasnal.polozenieX << ", " << krasnal.polozenieY << "), Odleglosc od kopalnii: " << odleglosc << ")\n";
+            
+            sumarycznaOdleglosc += odleglosc;
+
+            string tmp = kopalnia.wydobywanySurowiec;
+            if (tmp == "zloto") {
+                if (krasnoludki[krasnalID].preferowanyFach == tmp) {
+                    wydobycieZloto += krasnal.wydajnosc;
+                }
+                else {
+                    wydobycieZloto += 1;
+                }
+            }
+            else if (tmp == "srebro") {
+                if (krasnoludki[krasnalID].preferowanyFach == tmp) {
+                    wydobycieSrebro += krasnal.wydajnosc;
+                }
+                else {
+                    wydobycieSrebro += 1;
+                }
+            }
+            else if (tmp == "miedz") {
+                if (krasnoludki[krasnalID].preferowanyFach == tmp) {
+                    wydobycieMiedz += krasnal.wydajnosc;
+                }
+                else {
+                    wydobycieMiedz += 1;
+                }
+            }
+            
+        }
+        cout << endl;
+    }
+
+    cout << "Sniezka musi ugotowac " << sumarycznaOdleglosc << " owsianki" << endl;
+    cout << "Wydobywane zloto: " << wydobycieZloto <<  " jednostek" << endl;
+    cout << "Wydobywane srebro: " << wydobycieSrebro << " jednostek" << endl;
+    cout << "Wydobywane miedz: " << wydobycieMiedz << " jednostek" << endl;
+}

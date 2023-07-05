@@ -25,7 +25,7 @@ int main()
     //Sortowanie krasnoludkow
     sort(krasnoludki.begin(), krasnoludki.end(), compareDwarfs);
 
-    cout << "Dalsze rozkazy: " << endl;
+    cout << "\nDo naszego krolestwa przybyli: " << endl;
 
     for (int i = 0; i < krasnoludki.size(); i++)
     {
@@ -35,6 +35,12 @@ int main()
     {
         cout << "Kopalnia " << kopalnie[i].idKopalni << " " << kopalnie[i].wydobywanySurowiec << endl;
     }
+
+    cout << "\nKrolewna Sniezka nakazuje im nastepujace prace: " << endl;
+
+    przyporzadkujKrasnaleMaksWydobycie(krasnoludki, kopalnie);
+
+    wypiszInfoPrzyporzadkowanie(krasnoludki, kopalnie);
     
 }
 
