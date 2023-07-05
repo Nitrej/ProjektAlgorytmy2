@@ -105,7 +105,14 @@ void otoczkaWypukla(vector<Kopalnia> *kopalnie) {
     }
 
     //jezeli rozmiar mniejszy od 3 to otoczka niemozliwa
-    if (m < 3) return;
+    //Wypisujemy wszystkie kopalnie, poniewaz sa w jednej linii lub jest ich mniej niz 3
+    if (m < 3) 
+    {
+        for (int i = 0; i < n; i++) {
+            cout << "Kopalnia nr: " << tmp[i].id << " (" << tmp[i].x << ", " << tmp[i].y << ")" << endl;
+        }
+        return;
+    }
 
     //stos z 3 pierwszymi punktami
     std::stack<Punkt> S;
