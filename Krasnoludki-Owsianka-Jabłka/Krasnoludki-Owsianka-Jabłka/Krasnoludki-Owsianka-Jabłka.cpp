@@ -2,10 +2,20 @@
 //
 
 #include <iostream>
+#include "Funkcje.h"
 
+
+using namespace std;
 int main()
 {
-    std::cout << "Hello World!\n";
+    cout << "Krolestwo Sniezki wita!\n";
+    if (!wczytanieDanych()) {
+        cout << "Czegos tu brakuje!" << endl;
+        return 0;
+    }
+    cout << "Dalsze rozkazy: " << endl;
+
+    
 }
 
 // Uruchomienie programu: Ctrl + F5 lub menu Debugowanie > Uruchom bez debugowania
