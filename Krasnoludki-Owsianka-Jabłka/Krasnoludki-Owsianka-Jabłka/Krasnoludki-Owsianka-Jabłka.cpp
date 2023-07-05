@@ -43,7 +43,7 @@ int main()
 
     wypiszInfoPrzyporzadkowanie(krasnoludki, kopalnie);
     
-    cout << "Kopalnie przez króre musi przejsc Ksiaze: " << endl;
+    cout << "Kopalnie przez ktore musi przejsc Ksiaze: " << endl;
 
     otoczkaWypukla(&kopalnie);
 
