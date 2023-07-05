@@ -8,6 +8,7 @@
 #include "Funkcje.h"
 #include "kopalnia.h"
 #include "krasnoludek.h"
+#include "otoczka.h"
 
 
 using namespace std;
@@ -36,6 +37,10 @@ int main()
         cout << "Kopalnia " << kopalnie[i].idKopalni << " " << kopalnie[i].wydobywanySurowiec << endl;
     }
     
+    cout << "Otoczka wypukla: " << endl;
+
+    otoczkaWypukla(&kopalnie);
+
 }
 
 // Uruchomienie programu: Ctrl + F5 lub menu Debugowanie > Uruchom bez debugowania

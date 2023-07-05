@@ -133,6 +133,7 @@
     <ClInclude Include="kopalnia.h" />
     <ClInclude Include="krasnoludek.h" />
     <ClInclude Include="Funkcje.h" />
+    <ClInclude Include="otoczka.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="dane.txt" />
