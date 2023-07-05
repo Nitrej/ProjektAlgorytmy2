@@ -1,6 +1,7 @@
 #pragma once
 #include <fstream>
 #include <vector>
+#include <cmath>
 #include "krasnoludek.h"
 #include "kopalnia.h"
 
@@ -47,4 +48,11 @@ bool wczytanieDanych(vector<Kopalnia> &kopalnie, vector<Krasnoludek> &krasnoludk
 // Funkcja porównuj¹ca dla sortowania
 bool compareDwarfs(const Krasnoludek& krasnoludek1, const Krasnoludek& krasnoludek2) {
 	return krasnoludek1.wydajnosc > krasnoludek2.wydajnosc;
+}
+
+//Funkcja do obliczania odleglosci
+int obliczOdleglosc(int kopalniaX, int kopalniaY, int krasnoludekX, int krasnoludekY) {
+    int dx = abs(kopalniaX - krasnoludekX);
+    int dy = abs(kopalniaY - krasnoludekY);
+    return sqrt(dx * dx + dy * dy);
 }
