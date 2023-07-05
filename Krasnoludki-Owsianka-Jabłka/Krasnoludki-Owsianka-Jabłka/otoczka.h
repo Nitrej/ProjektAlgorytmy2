@@ -65,10 +65,12 @@ void otoczkaWypukla(vector<Kopalnia> *kopalnie) {
     int n = kopalnie->size();
 
     vector<Punkt> tmp;
+    vector<Punkt> input;
     for (int i = 0; i < n; i++) 
     {
         if (kopalnie->at(i).indeksyPracujacychKrasnali.size() >0) {
             tmp.push_back({ kopalnie->at(i).polozenieX, kopalnie->at(i).polozenieY , kopalnie->at(i).idKopalni });
+            input.push_back({ kopalnie->at(i).polozenieX, kopalnie->at(i).polozenieY , kopalnie->at(i).idKopalni });
         }
         
     }
@@ -89,11 +91,12 @@ void otoczkaWypukla(vector<Kopalnia> *kopalnie) {
 
     //Ustawienie max lewego i/lub max dolnego punktu na pozycji startowej
     swap(tmp[0], tmp[min]);
+    swap(input[0], input[min]);
 
     //Sortowanie wedlug wspolrzednych biegunowych
     p0 = tmp[0];
     qsort(&tmp[1], n - 1, sizeof(Punkt), compare);
-
+    qsort(&input[1], n - 1, sizeof(Punkt), compare);
 
     //Jezeli dwa lub wiecej punktow ma taki sam kat z p0 to biezemy tylko najdalszy
     int m = 1; //rozmiar zmodyfikowanej tablicy
@@ -111,8 +114,8 @@ void otoczkaWypukla(vector<Kopalnia> *kopalnie) {
     //Wypisujemy wszystkie kopalnie, poniewaz sa w jednej linii lub jest ich mniej niz 3
     if (m < 3) 
     {
-        for (int i = 0; i < n; i++) {
-            cout << "Kopalnia nr: " << tmp[i].id << " (" << tmp[i].x << ", " << tmp[i].y << ")" << endl;
+        for (int i = 0; i < input.size(); i++) {
+            cout << "Kopalnia nr: " << input[i].id << " (" << input[i].x << ", " << input[i].y << ")" << endl;
         }
         return;
     }
