@@ -66,3 +66,139 @@ int obliczOdleglosc(int kopalniaX, int kopalniaY, int krasnoludekX, int krasnolu
     int dy = abs(kopalniaY - krasnoludekY);
     return sqrt(dx * dx + dy * dy);
 }
+
+//Maksymalne wydobycie
+void przyporzadkujKrasnaleMaksWydobycie(vector<Krasnoludek>& dwarves, vector<Kopalnia>& mines) {
+    for (Krasnoludek& dwarf : dwarves) {
+        int best_mine = -1;
+        int best_efficiency = -1;
+
+        for (size_t i = 0; i < mines.size(); i++) {
+            Kopalnia& mine = mines[i];
+
+            if (mine.wydobywanySurowiec == dwarf.preferowanyFach && mine.indeksyPracujacychKrasnali.size() < mine.limitMiejsc) {
+                if (best_mine == -1 || dwarf.wydajnosc > best_efficiency) {
+                    best_mine = i;
+                    best_efficiency = dwarf.wydajnosc;
+                }
+            }
+        }
+
+        if (best_mine == -1) {
+            // Przypisanie do kopalni z wolnym miejscem
+            for (size_t i = 0; i < mines.size(); i++) {
+                Kopalnia& mine = mines[i];
+                if (mine.indeksyPracujacychKrasnali.size() < mine.limitMiejsc) {
+                    best_mine = i;
+                    break;
+                }
+            }
+        }
+
+        if (best_mine != -1) {
+            mines[best_mine].indeksyPracujacychKrasnali.push_back(&dwarf - &dwarves[0]);
+        }
+    }
+}
+
+//Maksymalne wydobycie z minimalnymi odleglosciami od kopalnii
+void przyporzadkujKrasnaleMaksWydobycieMaloOwsianki(vector<Krasnoludek>& dwarves, vector<Kopalnia>& mines) {
+    for (Krasnoludek& dwarf : dwarves) {
+        int best_mine = -1;
+        int best_efficiency = -1;
+        int best_distance = numeric_limits<int>::max();
+
+        for (size_t i = 0; i < mines.size(); i++) {
+            Kopalnia& mine = mines[i];
+
+            if (mine.wydobywanySurowiec == dwarf.preferowanyFach && mine.indeksyPracujacychKrasnali.size() < mine.limitMiejsc) {
+                int distance = obliczOdleglosc(dwarf.polozenieX, dwarf.polozenieY, mine.polozenieX, mine.polozenieY);
+
+                if (best_mine == -1 || (dwarf.wydajnosc > best_efficiency) ||
+                    (dwarf.wydajnosc == best_efficiency && distance < best_distance)) {
+                    best_mine = i;
+                    best_efficiency = dwarf.wydajnosc;
+                    best_distance = distance;
+                }
+            }
+        }
+
+        if (best_mine == -1) {
+            // Przypisanie kopalni z najbli¿szym preferowanym surowcem
+            int closest_mine = -1;
+            int closest_distance = numeric_limits<int>::max();
+
+            for (size_t i = 0; i < mines.size(); i++) {
+                Kopalnia& mine = mines[i];
+                if (mine.indeksyPracujacychKrasnali.size() < mine.limitMiejsc) {
+                    int distance = obliczOdleglosc(dwarf.polozenieX, dwarf.polozenieY, mine.polozenieX, mine.polozenieY);
+                    if (distance < closest_distance) {
+                        closest_mine = i;
+                        closest_distance = distance;
+                    }
+                }
+            }
+
+            best_mine = closest_mine;
+        }
+
+        if (best_mine != -1) {
+            mines[best_mine].indeksyPracujacychKrasnali.push_back(&dwarf - &dwarves[0]);
+        }
+    }
+}
+
+//Funkcja wypisujaca info o krasnoludkach
+void wypiszInfoPrzyporzadkowanie(vector<Krasnoludek>& krasnoludki, vector<Kopalnia>& kopalnie) {
+
+    int sumarycznaOdleglosc = 0;
+    int wydobycieZloto = 0;
+    int wydobycieSrebro = 0;
+    int wydobycieMiedz = 0;
+
+    for (const auto& kopalnia : kopalnie) {
+        cout << "Kopalnia (Surowiec: " << kopalnia.wydobywanySurowiec << ", Polozenie: (" << kopalnia.polozenieX << ", " << kopalnia.polozenieY << "))\n";
+
+        for (int krasnalID : kopalnia.indeksyPracujacychKrasnali) {
+            const Krasnoludek& krasnal = krasnoludki[krasnalID];
+
+            int odleglosc = obliczOdleglosc(krasnal.polozenieX, krasnal.polozenieY, kopalnia.polozenieX, kopalnia.polozenieY);
+            cout << "Krasnoludek z domku " << krasnal.idKrasnoludka << ", Polozenie: (" << krasnal.polozenieX << ", " << krasnal.polozenieY << "), Odleglosc od kopalnii: " << odleglosc << ")\n";
+            
+            sumarycznaOdleglosc += odleglosc;
+
+            string tmp = kopalnia.wydobywanySurowiec;
+            if (tmp == "zloto") {
+                if (krasnoludki[krasnalID].preferowanyFach == tmp) {
+                    wydobycieZloto += krasnal.wydajnosc;
+                }
+                else {
+                    wydobycieZloto += 1;
+                }
+            }
+            else if (tmp == "srebro") {
+                if (krasnoludki[krasnalID].preferowanyFach == tmp) {
+                    wydobycieSrebro += krasnal.wydajnosc;
+                }
+                else {
+                    wydobycieSrebro += 1;
+                }
+            }
+            else if (tmp == "miedz") {
+                if (krasnoludki[krasnalID].preferowanyFach == tmp) {
+                    wydobycieMiedz += krasnal.wydajnosc;
+                }
+                else {
+                    wydobycieMiedz += 1;
+                }
+            }
+            
+        }
+        cout << endl;
+    }
+
+    cout << "Sniezka musi ugotowac " << sumarycznaOdleglosc << " owsianki" << endl;
+    cout << "Wydobywane zloto: " << wydobycieZloto <<  " jednostek" << endl;
+    cout << "Wydobywane srebro: " << wydobycieSrebro << " jednostek" << endl;
+    cout << "Wydobywane miedz: " << wydobycieMiedz << " jednostek" << endl;
+}
