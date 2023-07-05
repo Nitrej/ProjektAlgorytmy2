@@ -67,9 +67,12 @@ void otoczkaWypukla(vector<Kopalnia> *kopalnie) {
     vector<Punkt> tmp;
     for (int i = 0; i < n; i++) 
     {
-        tmp.push_back({ kopalnie->at(i).polozenieX, kopalnie->at(i).polozenieY , kopalnie->at(i).idKopalni});
+        if (kopalnie->at(i).indeksyPracujacychKrasnali.size() >0) {
+            tmp.push_back({ kopalnie->at(i).polozenieX, kopalnie->at(i).polozenieY , kopalnie->at(i).idKopalni });
+        }
+        
     }
-
+    n = tmp.size();
     int ymin = tmp[0].y , min = 0;
     for (int i = 1; i < n; i++)
     {
