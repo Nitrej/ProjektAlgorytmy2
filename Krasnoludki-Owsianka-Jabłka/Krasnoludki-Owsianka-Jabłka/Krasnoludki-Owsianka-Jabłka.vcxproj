@@ -130,6 +130,8 @@
     <ClCompile Include="Krasnoludki-Owsianka-Jabłka.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="kopalnia.h" />
+    <ClInclude Include="krasnoludek.h" />
     <ClInclude Include="Funkcje.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
