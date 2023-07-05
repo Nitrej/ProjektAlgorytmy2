@@ -28,7 +28,7 @@ bool wczytanieDanych(vector<Kopalnia> &kopalnie, vector<Krasnoludek> &krasnoludk
 
     }
 
-    for (int i = 0; i < iloscKopalni) 
+    for (int i = 0; i < iloscKopalni; i++) 
     {
         std::string wydobywanySurowiec;
         int limitMiejsc;
