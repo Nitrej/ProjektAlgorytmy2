@@ -1,5 +1,0 @@
-#include "Krasnoludki-Owsianka-Jabłka/Krasnoludki-Owsianka-Jabłka/Funkcje.h"
-#ifndef PROJEKTALGORYTMYII_COMPAREDWARFSTEST_H
-#define PROJEKTALGORYTMYII_COMPAREDWARFSTEST_H
-
-#endif //PROJEKTALGORYTMYII_COMPAREDWARFSTEST_H
