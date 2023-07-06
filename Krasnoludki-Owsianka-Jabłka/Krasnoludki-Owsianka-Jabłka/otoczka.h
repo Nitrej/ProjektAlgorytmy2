@@ -17,6 +17,12 @@ struct Punkt
 Punkt p0;
 
 //zlozonosc O(1)
+
+/// <summary>
+/// Funkcja zwracaj¹ca drugi od góry element stosu.
+/// </summary>
+/// <param name="S">Referencja na stos</param>
+/// <returns>Drugi od góry element stosu</returns>
 Punkt nextToTop(std::stack<Punkt>& S)
 {
     Punkt p = S.top();
@@ -27,6 +33,12 @@ Punkt nextToTop(std::stack<Punkt>& S)
 }
 
 //zlozonosc czasowa O(1)
+
+/// <summary>
+/// Funkcja zamieniaj¹ca ze sob¹ dwa punkty .
+/// </summary>
+/// <param name="p1">Referencja na punkt 1</param>
+/// <param name="p2">Referencja na punkt 2</param>
 void swap(Punkt& p1, Punkt& p2)
 {
     Punkt temp = p1;
@@ -35,6 +47,13 @@ void swap(Punkt& p1, Punkt& p2)
 }
 
 //zlozonosc O(1)
+
+/// <summary>
+/// Funkcja obliczaj¹ca odleg³oœæ dwóch punktów od siebie.
+/// </summary>
+/// <param name="p1">Punkt 1</param>
+/// <param name="p2">Punkt 2</param>
+/// <returns>Ca³kowitoliczbowa odleg³oœæ dwóch punktów od siebie.</returns>
 int distance(Punkt p1, Punkt p2)
 {
     return (p1.x - p2.x) * (p1.x - p2.x) +
@@ -42,6 +61,14 @@ int distance(Punkt p1, Punkt p2)
 }
 
 //zlozonosc O(1)
+
+/// <summary>
+/// Funkcja oblicza orientacjê trzech punktów.
+/// </summary>
+/// <param name="p">Punkt 1</param>
+/// <param name="q">Punkt 2</param>
+/// <param name="r">Punkt 3</param>
+/// <returns>0 dla punktów le¿¹cych na jednej linii; 1 z ruchem wskazuwek zegara; 2 przeciwnie do ruchu wskazuwek zegara</returns>
 int orientation(Punkt p, Punkt q, Punkt r)
 {
     int val = (q.y - p.y) * (r.x - q.x) -
@@ -52,6 +79,13 @@ int orientation(Punkt p, Punkt q, Punkt r)
 }
 
 //zlozonosc czasowa O(1)
+
+/// <summary>
+/// Funkcja porównuj¹ca punkty
+/// </summary>
+/// <param name="vp1">WskaŸnik na punkt 1</param>
+/// <param name="vp2">WskaŸnik na punkt 2</param>
+/// <returns>Jeœli punkty s¹ wspó³liniowe (orientacja równa 0), funkcja porównuje odleg³oœci punktów p1 i p2 od p0, je¿eli odleg³oœæ od p2 jest wiêksza zwraca -1 w przeciwnym przypadku 1; Jeœli punkty nie s¹ wspó³liniowe (orientacja niezerowa), funkcja sprawdza, czy orientacja jest przeciwna do ruchu wskazówek zegara (orientacja równa 2). Jeœli tak, zwracana jest wartoœæ -1, w przeciwnym razie 1.</returns>
 int compare(const void* vp1, const void* vp2)
 {
     Punkt* p1 = (Punkt*)vp1;
@@ -66,6 +100,11 @@ int compare(const void* vp1, const void* vp2)
 
 //Algorytm Grahama
 //zlozonosc O(nlogn) n-liczba krasnoludkow
+
+/// <summary>
+/// Funkcja obliczaj¹ca z wykorzystaniem algorytmy Grahama i wypisuj¹ca na standardowe wyjœcie koordynaty i id kopalni w otoczce wypuk³ej 
+/// </summary>
+/// <param name="kopalnie">WskaŸnik na wektor kopalnii</param>
 void otoczkaWypukla(vector<Kopalnia> *kopalnie) {
     
     int n = kopalnie->size();
