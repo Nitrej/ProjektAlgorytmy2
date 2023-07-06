@@ -122,15 +122,13 @@ int obliczOdleglosc(int kopalniaX, int kopalniaY, int krasnoludekX, int krasnolu
 void przyporzadkujKrasnaleMaksWydobycie(vector<Krasnoludek>& dwarves, vector<Kopalnia>& mines) {
     for (Krasnoludek& dwarf : dwarves) {
         int best_mine = -1;
-        int best_efficiency = -1;
 
         for (size_t i = 0; i < mines.size(); i++) {
             Kopalnia& mine = mines[i];
 
             if (mine.wydobywanySurowiec == dwarf.preferowanyFach && mine.indeksyPracujacychKrasnali.size() < mine.limitMiejsc) {
-                if (best_mine == -1 || dwarf.wydajnosc > best_efficiency) {
+                if (best_mine == -1) {
                     best_mine = i;
-                    best_efficiency = dwarf.wydajnosc;
                 }
             }
         }
@@ -162,7 +160,6 @@ void przyporzadkujKrasnaleMaksWydobycie(vector<Krasnoludek>& dwarves, vector<Kop
 void przyporzadkujKrasnaleMaksWydobycieMaloOwsianki(vector<Krasnoludek>& dwarves, vector<Kopalnia>& mines) {
     for (Krasnoludek& dwarf : dwarves) {
         int best_mine = -1;
-        int best_efficiency = -1;
         int best_distance = numeric_limits<int>::max();
 
         for (size_t i = 0; i < mines.size(); i++) {
@@ -171,11 +168,8 @@ void przyporzadkujKrasnaleMaksWydobycieMaloOwsianki(vector<Krasnoludek>& dwarves
             if (mine.wydobywanySurowiec == dwarf.preferowanyFach && mine.indeksyPracujacychKrasnali.size() < mine.limitMiejsc) {
                 int distance = obliczOdleglosc(dwarf.polozenieX, dwarf.polozenieY, mine.polozenieX, mine.polozenieY);
 
-                if (best_mine == -1 || (dwarf.wydajnosc > best_efficiency) ||
-                    (dwarf.wydajnosc == best_efficiency && distance < best_distance)) {
+                if (best_mine == -1 && distance < best_distance){
                     best_mine = i;
-                    best_efficiency = dwarf.wydajnosc;
-                    best_distance = distance;
                 }
             }
         }
