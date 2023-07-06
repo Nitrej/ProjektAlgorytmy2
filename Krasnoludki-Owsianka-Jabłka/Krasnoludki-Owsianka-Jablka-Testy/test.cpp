@@ -34,24 +34,45 @@ TEST(przyporzadkujKrasnaleMaksWydobycieTest, Test_2) {
 		{2, "zloto", 2, 3, 3},
 		{3, "srebro", 1, 4, 4}
 	};
+
+	przyporzadkujKrasnaleMaksWydobycie(krasnoludki, kopalnie);
+
+	int n = 0;
+
+	for (int i = 0; i < kopalnie.size(); i++)
+	{
+		if (kopalnie[i].indeksyPracujacychKrasnali.size() > 0) n++;
+	}
+	ASSERT_EQ(n, 2);
+
 }
 
 
 TEST(przyporzadkujKrasnaleMaksWydobycieMaloOwsiankiTest, Test_3) {
 
 	vector<Krasnoludek> krasnoludki = {
-		{4, "zloto", 2, 1, 1},
-		{3, "srebro", 1, 0, 0},
+		{4, "zloto", 2, 0, 0},
+		{3, "srebro", 1, 1, 1},
 		{5, "miedz", 3, 2, 2}
 	};
 
 	vector<Kopalnia> kopalnie = {
-		{2, "zloto", 2, 3, 3},
-		{3, "srebro", 1, 4, 4}
+		{3, "zloto", 2, 3, 3},
+		{2, "srebro", 1, 4, 4},
+		{4, "miedz", 2, 5, 5},
+		{1, "zloto", 2, 6, 6}
 	};
 
-	ASSERT_NO_FATAL_FAILURE(przyporzadkujKrasnaleMaksWydobycieMaloOwsianki(krasnoludki, kopalnie));
+	przyporzadkujKrasnaleMaksWydobycieMaloOwsianki(krasnoludki, kopalnie);
 
+
+	int n = 0;
+
+	for (int i = 0; i < kopalnie.size(); i++)
+	{
+		if (kopalnie[i].indeksyPracujacychKrasnali.size() > 0) n++;
+	}
+	ASSERT_EQ(n, 3);
 }
 
 TEST(orientationTest, Test_4) {
