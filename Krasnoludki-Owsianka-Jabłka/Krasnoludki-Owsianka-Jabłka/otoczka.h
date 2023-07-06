@@ -8,9 +8,6 @@
 
 using namespace std;
 
-/// <summary>
-/// Struktura opisujaca punkt
-/// </summary>
 struct Punkt
 {
     int x, y;
@@ -20,12 +17,6 @@ struct Punkt
 Punkt p0;
 
 //zlozonosc O(1)
-
-/// <summary>
-/// Funkcja zwracajaca drugi od gory element stosu.
-/// </summary>
-/// <param name="S">Referencja na stos</param>
-/// <returns>Drugi od gory element stosu</returns>
 Punkt nextToTop(std::stack<Punkt>& S)
 {
     Punkt p = S.top();
@@ -35,13 +26,7 @@ Punkt nextToTop(std::stack<Punkt>& S)
     return res;
 }
 
-//zlozonosc  O(1)
-
-/// <summary>
-/// Funkcja zamieniaj¹ca ze soba dwa punkty .
-/// </summary>
-/// <param name="p1">Referencja na punkt 1</param>
-/// <param name="p2">Referencja na punkt 2</param>
+//zlozonosc czasowa O(1)
 void swap(Punkt& p1, Punkt& p2)
 {
     Punkt temp = p1;
@@ -50,13 +35,6 @@ void swap(Punkt& p1, Punkt& p2)
 }
 
 //zlozonosc O(1)
-
-/// <summary>
-/// Funkcja obliczaj¹ca odleg³osc dwoch punktow od siebie.
-/// </summary>
-/// <param name="p1">Punkt 1</param>
-/// <param name="p2">Punkt 2</param>
-/// <returns>Calkowitoliczbowa odleglosc dwoch punktow od siebie.</returns>
 int distance(Punkt p1, Punkt p2)
 {
     return (p1.x - p2.x) * (p1.x - p2.x) +
@@ -64,14 +42,6 @@ int distance(Punkt p1, Punkt p2)
 }
 
 //zlozonosc O(1)
-
-/// <summary>
-/// Funkcja oblicza orientacje trzech punktow.
-/// </summary>
-/// <param name="p">Punkt 1</param>
-/// <param name="q">Punkt 2</param>
-/// <param name="r">Punkt 3</param>
-/// <returns>0 dla punktów lezacych na jednej linii; 1 z ruchem wskazowek zegara; 2 przeciwnie do ruchu wskazowek zegara</returns>
 int orientation(Punkt p, Punkt q, Punkt r)
 {
     int val = (q.y - p.y) * (r.x - q.x) -
@@ -81,14 +51,7 @@ int orientation(Punkt p, Punkt q, Punkt r)
     return (val > 0) ? 1 : 2; // z lub przeciwnie do ruchu wskazowek zegara
 }
 
-//zlozonosc  O(1)
-
-/// <summary>
-/// Funkcja porownuj¹ca punkty
-/// </summary>
-/// <param name="vp1">Wskaznik na punkt 1</param>
-/// <param name="vp2">Wskaznik na punkt 2</param>
-/// <returns>Jesli punkty s¹ wspoliniowe (orientacja rowna 0), funkcja porownuje odleglosci punktow p1 i p2 od p0, jezeli odleglosc od p2 jest wieksza zwraca -1 w przeciwnym przypadku 1; Jesli punkty nie s¹ wspolliniowe (orientacja niezerowa), funkcja sprawdza, czy orientacja jest przeciwna do ruchu wskazowek zegara (orientacja równa 2). Jesli tak, zwracana jest wartosc -1, w przeciwnym razie 1.</returns>
+//zlozonosc czasowa O(1)
 int compare(const void* vp1, const void* vp2)
 {
     Punkt* p1 = (Punkt*)vp1;
@@ -103,25 +66,20 @@ int compare(const void* vp1, const void* vp2)
 
 //Algorytm Grahama
 //zlozonosc O(nlogn) n-liczba krasnoludkow
-
-/// <summary>
-/// Funkcja obliczajaca z wykorzystaniem algorytmy Grahama i wypisuj¹ca na standardowe wyjscie koordynaty i id kopalni w otoczce wypuklej 
-/// </summary>
-/// <param name="kopalnie">Wskaznik na wektor kopalnii</param>
 void otoczkaWypukla(vector<Kopalnia> *kopalnie) {
-    
+
     int n = kopalnie->size();
     int dlugoscTrasy = 0;
 
     vector<Punkt> tmp;
     vector<Punkt> input;
-    for (int i = 0; i < n; i++) 
+    for (int i = 0; i < n; i++)
     {
         if (kopalnie->at(i).indeksyPracujacychKrasnali.size() >0) {
             tmp.push_back({ kopalnie->at(i).polozenieX, kopalnie->at(i).polozenieY , kopalnie->at(i).idKopalni });
             input.push_back({ kopalnie->at(i).polozenieX, kopalnie->at(i).polozenieY , kopalnie->at(i).idKopalni });
         }
-        
+
     }
     n = tmp.size();
     int ymin = tmp[0].y , min = 0;
@@ -130,12 +88,12 @@ void otoczkaWypukla(vector<Kopalnia> *kopalnie) {
         int y = tmp[i].y;
 
         //Wybranie max lewego i/lub max dolnego punktu
-        if ((y < ymin) || (ymin == y && tmp[i].x < tmp[min].x)) 
+        if ((y < ymin) || (ymin == y && tmp[i].x < tmp[min].x))
         {
             ymin = tmp[i].y;
             min = i;
         }
-            
+
     }
 
     //Ustawienie max lewego i/lub max dolnego punktu na pozycji startowej
@@ -161,14 +119,14 @@ void otoczkaWypukla(vector<Kopalnia> *kopalnie) {
 
     //jezeli rozmiar mniejszy od 3 to otoczka niemozliwa
     //Wypisujemy wszystkie kopalnie, poniewaz sa w jednej linii lub jest ich mniej niz 3
-    if (m < 3) 
+    if (m < 3)
     {
         for (int i = 0; i < input.size(); i++) {
             cout << "Kopalnia nr: " << input[i].id << " (" << input[i].x << ", " << input[i].y << ")" << endl;
             if (i != 0) dlugoscTrasy += distance(input[i], input[i - 1]);
         }
         //if (input.size() != 1) dlugoscTrasy += distance(input[0], input[input.size()-1]);
-        cout << "\nKsiaze musi przebyc trase dluosci: " << dlugoscTrasy << " jednostek" << endl;
+        cout << "\nKsiaze musi przebyc trase dlugosci " << dlugoscTrasy << " jednostek." << endl;
         return;
     }
 
@@ -198,5 +156,5 @@ void otoczkaWypukla(vector<Kopalnia> *kopalnie) {
         if (i != 0) dlugoscTrasy += distance(convexHullPoints[i], convexHullPoints[i - 1]);
     }
     if(convexHullPoints.size() != 1) dlugoscTrasy += distance(convexHullPoints[0], convexHullPoints[input.size() - 1]);
-    cout<<"\nKsiaze musi przebyc trase dluosci: "<<dlugoscTrasy<<" jednostek"<<endl;
+    cout<<"\nKsiaze musi przebyc trase dlugosci "<<dlugoscTrasy<<" jednostek."<<endl;
 };
