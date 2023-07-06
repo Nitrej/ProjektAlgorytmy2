@@ -12,7 +12,6 @@ using namespace std;
 
 vector<Krasnoludek> krasnoludki;
 vector<Kopalnia> kopalnie;
-int tmp;
 
 int main()
 {
@@ -31,7 +30,7 @@ int main()
 
     cout << "\nKrolewna Sniezka nakazuje im nastepujace prace: " << endl;
 
-    tmp = przyporzadkujKrasnaleMaksWydobycie(krasnoludki, kopalnie);
+    przyporzadkujKrasnaleMaksWydobycie(krasnoludki, kopalnie);
 
     wypiszInfoPrzyporzadkowanie(krasnoludki, kopalnie);
 
@@ -46,7 +45,7 @@ int main()
 
     cout << "\nPo uwzglenieniu lepszych mozliwosci przydzialu pracy dla krasnoludkow Krolewna zadecydowala tak: " << endl;
 
-    tmp = przyporzadkujKrasnaleMaksWydobycieMaloOwsianki(krasnoludki, kopalnie);
+    przyporzadkujKrasnaleMaksWydobycieMaloOwsianki(krasnoludki, kopalnie);
 
     wypiszInfoPrzyporzadkowanie(krasnoludki, kopalnie);
 

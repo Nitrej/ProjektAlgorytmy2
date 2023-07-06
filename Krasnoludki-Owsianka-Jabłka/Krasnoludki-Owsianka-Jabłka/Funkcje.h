@@ -119,8 +119,7 @@ int obliczOdleglosc(int kopalniaX, int kopalniaY, int krasnoludekX, int krasnolu
 /// </summary>
 /// <param name="dwarves">Referencja na wektor krasnoludkow</param>
 /// <param name="mines">Referencja na wektor kopaln</param>
-int przyporzadkujKrasnaleMaksWydobycie(vector<Krasnoludek>& dwarves, vector<Kopalnia>& mines) {
-    int assignedDwarves = 0;
+void przyporzadkujKrasnaleMaksWydobycie(vector<Krasnoludek>& dwarves, vector<Kopalnia>& mines) {
     for (Krasnoludek& dwarf : dwarves) {
         int best_mine = -1;
         int best_efficiency = -1;
@@ -149,11 +148,8 @@ int przyporzadkujKrasnaleMaksWydobycie(vector<Krasnoludek>& dwarves, vector<Kopa
 
         if (best_mine != -1) {
             mines[best_mine].indeksyPracujacychKrasnali.push_back(&dwarf - &dwarves[0]);
-            assignedDwarves++;
         }
     }
-
-    return assignedDwarves;
 }
 
 //Maksymalne wydobycie z minimalnymi odleglosciami od kopalni, Zloznosc O(n^2) gdzie n-liczba krasnoludkow
@@ -163,8 +159,7 @@ int przyporzadkujKrasnaleMaksWydobycie(vector<Krasnoludek>& dwarves, vector<Kopa
 /// </summary>
 /// <param name="dwarves">Referencja na wektor krasnoludkow</param>
 /// <param name="mines">Referencja na wektor kopaln</param>
-int przyporzadkujKrasnaleMaksWydobycieMaloOwsianki(vector<Krasnoludek>& dwarves, vector<Kopalnia>& mines) {
-    int assignedDwarves = 0;
+void przyporzadkujKrasnaleMaksWydobycieMaloOwsianki(vector<Krasnoludek>& dwarves, vector<Kopalnia>& mines) {
     for (Krasnoludek& dwarf : dwarves) {
         int best_mine = -1;
         int best_efficiency = -1;
@@ -206,10 +201,8 @@ int przyporzadkujKrasnaleMaksWydobycieMaloOwsianki(vector<Krasnoludek>& dwarves,
 
         if (best_mine != -1) {
             mines[best_mine].indeksyPracujacychKrasnali.push_back(&dwarf - &dwarves[0]);
-            assignedDwarves++;
         }
     }
-    return assignedDwarves;
 }
 
 //Funkcja wypisujaca info o krasnoludkach
