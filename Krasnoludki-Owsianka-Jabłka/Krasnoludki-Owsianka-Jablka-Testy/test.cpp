@@ -6,12 +6,6 @@
 #include"../Krasnoludki-Owsianka-Jab³ka/krasnoludek.h"
 #include"../Krasnoludki-Owsianka-Jab³ka/otoczka.h"
 
-TEST(TestCaseName, TestName) {
-  EXPECT_EQ(1, 1);
-  EXPECT_TRUE(true);
-}
-
-
 TEST(compareDwarfsTest, Test_1) {
 
 	Krasnoludek k1 = Krasnoludek(7, "zloto", 1, 2, 3);
