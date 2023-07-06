@@ -15,7 +15,7 @@ using namespace std;
 /// <returns>true w przypadku poprawnego wczytania danych; false dla pozostalych</returns>
 bool wczytanieDanych(vector<Kopalnia> *kopalnie, vector<Krasnoludek> *krasnoludki)
 {
-    
+
     try
     {
         int iloscKrasnali, iloscKopalni;
@@ -66,7 +66,7 @@ bool wczytanieDanych(vector<Kopalnia> *kopalnie, vector<Krasnoludek> *krasnoludk
 /// Funkcja wypisuje informacje o krasnoludkach na standardowe wyjscie.
 /// </summary>
 /// <param name="krasnale">Referencja do wektora krasnoludkow</param>
-void wypiszKrasnale(vector<Krasnoludek>& krasnale) 
+void wypiszKrasnale(vector<Krasnoludek>& krasnale)
 {
     cout << "\nDo naszego krolestwa przybyli: " << endl;
     for (int i = 0; i < krasnale.size(); i++)
@@ -112,14 +112,15 @@ int obliczOdleglosc(int kopalniaX, int kopalniaY, int krasnoludekX, int krasnolu
     return sqrt(dx * dx + dy * dy);
 }
 
-//Maksymalne wydobycie, Zlozonosc O(n^2) gdzie n-liczba krasnoludkow 
+//Maksymalne wydobycie, Zlozonosc O(n^2) gdzie n-liczba krasnoludkow
 
 /// <summary>
 /// Funkcja przyporzadkowuje krasnoludki do kopalnii pod wzlêdem maksymalnego wydobycia.
 /// </summary>
 /// <param name="dwarves">Referencja na wektor krasnoludkow</param>
 /// <param name="mines">Referencja na wektor kopaln</param>
-void przyporzadkujKrasnaleMaksWydobycie(vector<Krasnoludek>& dwarves, vector<Kopalnia>& mines) {
+int przyporzadkujKrasnaleMaksWydobycie(vector<Krasnoludek>& dwarves, vector<Kopalnia>& mines) {
+    int assignedDwarves = 0;
     for (Krasnoludek& dwarf : dwarves) {
         int best_mine = -1;
 
@@ -146,8 +147,11 @@ void przyporzadkujKrasnaleMaksWydobycie(vector<Krasnoludek>& dwarves, vector<Kop
 
         if (best_mine != -1) {
             mines[best_mine].indeksyPracujacychKrasnali.push_back(&dwarf - &dwarves[0]);
+            assignedDwarves++;
         }
     }
+
+    return assignedDwarves;
 }
 
 //Maksymalne wydobycie z minimalnymi odleglosciami od kopalni, Zloznosc O(n^2) gdzie n-liczba krasnoludkow
@@ -157,7 +161,8 @@ void przyporzadkujKrasnaleMaksWydobycie(vector<Krasnoludek>& dwarves, vector<Kop
 /// </summary>
 /// <param name="dwarves">Referencja na wektor krasnoludkow</param>
 /// <param name="mines">Referencja na wektor kopaln</param>
-void przyporzadkujKrasnaleMaksWydobycieMaloOwsianki(vector<Krasnoludek>& dwarves, vector<Kopalnia>& mines) {
+int przyporzadkujKrasnaleMaksWydobycieMaloOwsianki(vector<Krasnoludek>& dwarves, vector<Kopalnia>& mines) {
+    int assignedDwarves = 0;
     for (Krasnoludek& dwarf : dwarves) {
         int best_mine = -1;
         int best_distance = numeric_limits<int>::max();
@@ -195,8 +200,10 @@ void przyporzadkujKrasnaleMaksWydobycieMaloOwsianki(vector<Krasnoludek>& dwarves
 
         if (best_mine != -1) {
             mines[best_mine].indeksyPracujacychKrasnali.push_back(&dwarf - &dwarves[0]);
+            assignedDwarves++;
         }
     }
+    return assignedDwarves;
 }
 
 //Funkcja wypisujaca info o krasnoludkach
@@ -221,7 +228,7 @@ void wypiszInfoPrzyporzadkowanie(vector<Krasnoludek>& krasnoludki, vector<Kopaln
 
             int odleglosc = obliczOdleglosc(krasnal.polozenieX, krasnal.polozenieY, kopalnia.polozenieX, kopalnia.polozenieY);
             cout << "Krasnoludek z domku " << krasnal.idKrasnoludka << ", Polozenie: (" << krasnal.polozenieX << ", " << krasnal.polozenieY << "), Odleglosc od kopalnii: " << odleglosc << ")\n";
-            
+
             sumarycznaOdleglosc += odleglosc;
 
             string tmp = kopalnia.wydobywanySurowiec;
@@ -249,7 +256,7 @@ void wypiszInfoPrzyporzadkowanie(vector<Krasnoludek>& krasnoludki, vector<Kopaln
                     wydobycieMiedz += 1;
                 }
             }
-            
+
         }
         cout << endl;
     }
