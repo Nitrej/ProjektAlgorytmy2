@@ -12,9 +12,11 @@ using namespace std;
 
 vector<Krasnoludek> krasnoludki;
 vector<Kopalnia> kopalnie;
+int tmp;
 
 int main()
 {
+
     cout << "Krolestwo Sniezki wita!\n";
     if (!wczytanieDanych(&kopalnie,&krasnoludki)) {
         cout << "Czegos tu brakuje!" << endl;
@@ -29,7 +31,7 @@ int main()
 
     cout << "\nKrolewna Sniezka nakazuje im nastepujace prace: " << endl;
 
-    przyporzadkujKrasnaleMaksWydobycie(krasnoludki, kopalnie);
+    tmp = przyporzadkujKrasnaleMaksWydobycie(krasnoludki, kopalnie);
 
     wypiszInfoPrzyporzadkowanie(krasnoludki, kopalnie);
 
@@ -44,8 +46,8 @@ int main()
 
     cout << "\nPo uwzglenieniu lepszych mozliwosci przydzialu pracy dla krasnoludkow Krolewna zadecydowala tak: " << endl;
 
-    przyporzadkujKrasnaleMaksWydobycieMaloOwsianki(krasnoludki, kopalnie);
-    
+    tmp = przyporzadkujKrasnaleMaksWydobycieMaloOwsianki(krasnoludki, kopalnie);
+
     wypiszInfoPrzyporzadkowanie(krasnoludki, kopalnie);
 
     cout << "\nZmieniona zostala takze ranna trasa Ksiecia i wyglada teraz tak: " << endl;
