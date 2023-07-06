@@ -15,8 +15,10 @@ vector<Kopalnia> kopalnie;
 
 int main()
 {
+    cout << "=================================================================================================" <<endl;
+    cout << "-------------------------------------Krolestwo Sniezki wita!-------------------------------------\n";
+    cout << "=================================================================================================";
 
-    cout << "Krolestwo Sniezki wita!\n";
     if (!wczytanieDanych(&kopalnie,&krasnoludki)) {
         cout << "Czegos tu brakuje!" << endl;
         return 0;
@@ -28,13 +30,16 @@ int main()
 
     wypiszKopalnie(kopalnie);
 
-    cout << "\nKrolewna Sniezka nakazuje im nastepujace prace: " << endl;
+    cout << "=================================================================================================" <<endl;
+    cout << "Krolewna Sniezka nakazuje im nastepujace prace: " << endl;
+
 
     przyporzadkujKrasnaleMaksWydobycie(krasnoludki, kopalnie);
 
     wypiszInfoPrzyporzadkowanie(krasnoludki, kopalnie);
+    cout << "=================================================================================================" <<endl;
+    cout << "Ranna trasa Ksiecia wyglada wiec nastepujaco: " << endl;
 
-    cout << "\nRanna trasa Ksiecia wyglada wiec nastepujaco: " << endl;
 
     otoczkaWypukla(&kopalnie);
 
@@ -43,15 +48,19 @@ int main()
         kopalnia.indeksyPracujacychKrasnali.clear();
     }
 
-    cout << "\nPo uwzglenieniu lepszych mozliwosci przydzialu pracy dla krasnoludkow Krolewna zadecydowala tak: " << endl;
+    cout << "=================================================================================================" <<endl;
+    cout << "Po uwzglednieniu lepszych mozliwosci przydzialu pracy dla krasnoludkow Krolewna zadecydowala tak: " << endl;
+
 
     przyporzadkujKrasnaleMaksWydobycieMaloOwsianki(krasnoludki, kopalnie);
 
     wypiszInfoPrzyporzadkowanie(krasnoludki, kopalnie);
+    cout << "=================================================================================================" <<endl;
+    cout << "Zmieniona zostala takze ranna trasa Ksiecia i wyglada teraz tak: \n" << endl;
 
-    cout << "\nZmieniona zostala takze ranna trasa Ksiecia i wyglada teraz tak: " << endl;
 
     otoczkaWypukla(&kopalnie);
+    cout << "=================================================================================================" <<endl;
 
 }
 
