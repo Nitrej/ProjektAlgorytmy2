@@ -3,7 +3,7 @@
 #include <string>
 
 /// <summary>
-/// Klasa reprezentuj¹ca kopalnie.
+/// Klasa reprezentujaca kopalnie.
 /// </summary>
 class Kopalnia
 {
@@ -17,19 +17,19 @@ public:
 	/// </summary>
 	std::string wydobywanySurowiec;
 	/// <summary>
-	/// Maksymalna pojemnoœæ kopalnii.
+	/// Maksymalna pojemnosc kopalnii.
 	/// </summary>
 	int limitMiejsc;
 	/// <summary>
-	/// Wspó³rzêdna x kopalnii.
+	/// Wspolrzedna x kopalnii.
 	/// </summary>
 	int polozenieX;
 	/// <summary>
-	/// Wspó³rzêdna y kopalnii.
+	/// Wspolrzedna y kopalnii.
 	/// </summary>
 	int polozenieY;
 	/// <summary>
-	/// Wektor liczb ca³kowitych reprezentujacych id pracuj¹cych krasnoludków. 
+	/// Wektor liczb calkowitych reprezentujacych id pracuj¹cych krasnoludkow. 
 	/// </summary>
 	std::vector<int> indeksyPracujacychKrasnali = {};
 
@@ -39,8 +39,8 @@ public:
 	/// <param name="idKopalni">Id kopalnii</param>
 	/// <param name="tmpwydobywanySurowiec">Wydobywany surowiec</param>
 	/// <param name="tmplimitMiejsc">Maksymalna pojemnoœæ kopalnii</param>
-	/// <param name="tmpPolozenieX">Wspó³rzêdna x kopalnii</param>
-	/// <param name="tmpPolozenieY">Wspó³rzêdna y kopalnii</param>
+	/// <param name="tmpPolozenieX">Wspolrzedna x kopalnii</param>
+	/// <param name="tmpPolozenieY">Wspolrzedna y kopalnii</param>
 	Kopalnia(int idKopalni, std::string tmpwydobywanySurowiec,int tmplimitMiejsc, int tmpPolozenieX, int tmpPolozenieY) {
 		this->idKopalni = idKopalni;
 		this->wydobywanySurowiec = tmpwydobywanySurowiec;

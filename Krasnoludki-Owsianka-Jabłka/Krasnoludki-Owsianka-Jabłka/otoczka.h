@@ -8,6 +8,9 @@
 
 using namespace std;
 
+/// <summary>
+/// Struktura opisujaca punkt
+/// </summary>
 struct Punkt
 {
     int x, y;
@@ -19,10 +22,10 @@ Punkt p0;
 //zlozonosc O(1)
 
 /// <summary>
-/// Funkcja zwracaj¹ca drugi od góry element stosu.
+/// Funkcja zwracajaca drugi od gory element stosu.
 /// </summary>
 /// <param name="S">Referencja na stos</param>
-/// <returns>Drugi od góry element stosu</returns>
+/// <returns>Drugi od gory element stosu</returns>
 Punkt nextToTop(std::stack<Punkt>& S)
 {
     Punkt p = S.top();
@@ -32,10 +35,10 @@ Punkt nextToTop(std::stack<Punkt>& S)
     return res;
 }
 
-//zlozonosc czasowa O(1)
+//zlozonosc  O(1)
 
 /// <summary>
-/// Funkcja zamieniaj¹ca ze sob¹ dwa punkty .
+/// Funkcja zamieniaj¹ca ze soba dwa punkty .
 /// </summary>
 /// <param name="p1">Referencja na punkt 1</param>
 /// <param name="p2">Referencja na punkt 2</param>
@@ -49,11 +52,11 @@ void swap(Punkt& p1, Punkt& p2)
 //zlozonosc O(1)
 
 /// <summary>
-/// Funkcja obliczaj¹ca odleg³oœæ dwóch punktów od siebie.
+/// Funkcja obliczaj¹ca odleg³osc dwoch punktow od siebie.
 /// </summary>
 /// <param name="p1">Punkt 1</param>
 /// <param name="p2">Punkt 2</param>
-/// <returns>Ca³kowitoliczbowa odleg³oœæ dwóch punktów od siebie.</returns>
+/// <returns>Calkowitoliczbowa odleglosc dwoch punktow od siebie.</returns>
 int distance(Punkt p1, Punkt p2)
 {
     return (p1.x - p2.x) * (p1.x - p2.x) +
@@ -63,12 +66,12 @@ int distance(Punkt p1, Punkt p2)
 //zlozonosc O(1)
 
 /// <summary>
-/// Funkcja oblicza orientacjê trzech punktów.
+/// Funkcja oblicza orientacje trzech punktow.
 /// </summary>
 /// <param name="p">Punkt 1</param>
 /// <param name="q">Punkt 2</param>
 /// <param name="r">Punkt 3</param>
-/// <returns>0 dla punktów le¿¹cych na jednej linii; 1 z ruchem wskazuwek zegara; 2 przeciwnie do ruchu wskazuwek zegara</returns>
+/// <returns>0 dla punktów lezacych na jednej linii; 1 z ruchem wskazowek zegara; 2 przeciwnie do ruchu wskazowek zegara</returns>
 int orientation(Punkt p, Punkt q, Punkt r)
 {
     int val = (q.y - p.y) * (r.x - q.x) -
@@ -78,14 +81,14 @@ int orientation(Punkt p, Punkt q, Punkt r)
     return (val > 0) ? 1 : 2; // z lub przeciwnie do ruchu wskazowek zegara
 }
 
-//zlozonosc czasowa O(1)
+//zlozonosc  O(1)
 
 /// <summary>
-/// Funkcja porównuj¹ca punkty
+/// Funkcja porownuj¹ca punkty
 /// </summary>
-/// <param name="vp1">WskaŸnik na punkt 1</param>
-/// <param name="vp2">WskaŸnik na punkt 2</param>
-/// <returns>Jeœli punkty s¹ wspó³liniowe (orientacja równa 0), funkcja porównuje odleg³oœci punktów p1 i p2 od p0, je¿eli odleg³oœæ od p2 jest wiêksza zwraca -1 w przeciwnym przypadku 1; Jeœli punkty nie s¹ wspó³liniowe (orientacja niezerowa), funkcja sprawdza, czy orientacja jest przeciwna do ruchu wskazówek zegara (orientacja równa 2). Jeœli tak, zwracana jest wartoœæ -1, w przeciwnym razie 1.</returns>
+/// <param name="vp1">Wskaznik na punkt 1</param>
+/// <param name="vp2">Wskaznik na punkt 2</param>
+/// <returns>Jesli punkty s¹ wspoliniowe (orientacja rowna 0), funkcja porownuje odleglosci punktow p1 i p2 od p0, jezeli odleglosc od p2 jest wieksza zwraca -1 w przeciwnym przypadku 1; Jesli punkty nie s¹ wspolliniowe (orientacja niezerowa), funkcja sprawdza, czy orientacja jest przeciwna do ruchu wskazowek zegara (orientacja równa 2). Jesli tak, zwracana jest wartosc -1, w przeciwnym razie 1.</returns>
 int compare(const void* vp1, const void* vp2)
 {
     Punkt* p1 = (Punkt*)vp1;
@@ -102,9 +105,9 @@ int compare(const void* vp1, const void* vp2)
 //zlozonosc O(nlogn) n-liczba krasnoludkow
 
 /// <summary>
-/// Funkcja obliczaj¹ca z wykorzystaniem algorytmy Grahama i wypisuj¹ca na standardowe wyjœcie koordynaty i id kopalni w otoczce wypuk³ej 
+/// Funkcja obliczajaca z wykorzystaniem algorytmy Grahama i wypisuj¹ca na standardowe wyjscie koordynaty i id kopalni w otoczce wypuklej 
 /// </summary>
-/// <param name="kopalnie">WskaŸnik na wektor kopalnii</param>
+/// <param name="kopalnie">Wskaznik na wektor kopalnii</param>
 void otoczkaWypukla(vector<Kopalnia> *kopalnie) {
     
     int n = kopalnie->size();
